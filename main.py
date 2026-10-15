@@ -51,6 +51,7 @@ async def handle_message(message: types.Message):
             reply = data["choices"][0]["message"]["content"]
             await message.answer(reply)
         else:
+            logging.error(f"OpenRouter error status {response.status_code}: {response.text}")
             await message.answer("Ой, щось зв'язок підкачав... Спробуй ще раз трохи пізніше!")
             
     except Exception as e:
